@@ -14,6 +14,7 @@ CentOS 7にremiリポジトリを追加し、 nginx / php 5.6 / redis / mysql / 
 	vagrant ssh
 
 以上で内蔵サーバが立ち上がるので、 http://localhost:9000 にアクセスすれば、作成直後のプロジェクト画面が表示されます。
+
 ※ Windowsの場合は vagrant ssh の時点で
 「sshコマンドが無いので、この情報を使って自分でsshクライアントから接続して下さい」
 という旨のメッセージが出るので、それに従って接続して下さい。
@@ -32,7 +33,7 @@ http://readouble.com/laravel/5/0/0/ja/installation.html
 
 ## Usage
 
-laravelの中身が ./testproj/ に展開されていますので、それを適宜弄って下さい。
+laravelの中身が ./data/testproj/ に展開されていますので、それを適宜弄って下さい。
 
 
 
