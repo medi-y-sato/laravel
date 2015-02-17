@@ -2,9 +2,10 @@
 
 Vagarntでlaravelが即使える環境を作ってみるテスト。
 
-CentOS 7にremiリポジトリを追加し、 nginx / php 5.6 / redis / mysql / fruentd(td-agent) を導入します。
+CentOS 7にremiリポジトリを追加し、 nginx / php 5.6 + fpm / redis / MariaDB / fruentd(td-agent) を導入します。
 
-そのうえで testproj という名前の Laravel5 プロジェクトを作成し、 nginx / php-fpm の向き先を設定し、起動します。
+required : vbguest プラグイン
+	vagrant plugin install vagrant-vbguest
 
 ## Installation
 
@@ -13,7 +14,17 @@ CentOS 7にremiリポジトリを追加し、 nginx / php 5.6 / redis / mysql / 
 	vagrant up
 	vagrant ssh
 
-以上で内蔵サーバが立ち上がるので、 http://localhost:9000 にアクセスすれば、作成直後のプロジェクト画面が表示されます。
+以降Vagarant VMにログインした状態で、下記を実行し、セットアップを完了して下さい。
+
+	sudo mysql_secure_installation
+MariaDBの初期設定です。
+
+	cd /vagrant/data/
+	composer create-project laravel/laravel --prefer-dist testproj
+Laravel5のプロジェクトを作成します。
+testprojの代わりに、好きなプロジェクト名を指定してもいいです。
+
+以上完了後、 http://localhost:9000/[project_name]/public/ にアクセスすれば、作成直後のプロジェクト画面が表示されます。
 
 ※ Windowsの場合は vagrant ssh の時点で
 「sshコマンドが無いので、この情報を使って自分でsshクライアントから接続して下さい」
@@ -33,8 +44,6 @@ http://readouble.com/laravel/5/0/0/ja/installation.html
 
 ## Usage
 
-laravelの中身が ./data/testproj/ に展開されていますので、それを適宜弄って下さい。
+./data/ 以下がVMの /vagrant/data/ 以下にマウントされているので、適宜弄ってみてください。
 
 
-
-	
