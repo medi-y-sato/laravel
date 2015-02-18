@@ -16,6 +16,6 @@ Vagrant.configure(2) do |config|
 
 	config.vm.provision :shell, :path => "provision.sh" 
 
-	config.vm.synced_folder "./" , "/vagrant" , owner: "vagrant", group: "nginx"
+	config.vm.synced_folder "." , "/vagrant" , mount_options: ["dmode=777", "fmode=666"]
 
 end
