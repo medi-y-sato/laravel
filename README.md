@@ -16,9 +16,6 @@ required : vbguest プラグイン
 
 以降Vagarant VMにログインした状態で、下記を実行し、セットアップを完了して下さい。
 
-	sudo mysql_secure_installation
-MariaDBの初期設定です。
-
 	cd /vagrant/data/
 	composer create-project laravel/laravel --prefer-dist
 Laravel5のプロジェクトを作成します。
@@ -28,6 +25,12 @@ Laravel4で作りたい場合は、こう。
 
 以上完了後、 http://localhost:9000/
 にアクセスすれば、作成直後のプロジェクト画面が表示されます。
+
+	sudo mysql_secure_installation
+MariaDBの初期設定です。
+こののち mysql クライアントからLaravel用のユーザとDBを作成し、 app/config/database.php へ設定を入れて下さい。
+
+	GRANT ALL PRIVILEGES ON dbname.* TO username@localhost IDENTIFIED BY 'password' WITH GRANT OPTION;
 
 ※ Windowsの場合は vagrant ssh の時点で
 「sshコマンドが無いので、この情報を使って自分でsshクライアントから接続して下さい」
